@@ -1,5 +1,5 @@
 //API Key
-const API_KEY=`25e489afb4c8219233913ec9051d9ccd`;
+const API_KEY=``;
 
 const loadTemperature = city =>{
     const url =`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
