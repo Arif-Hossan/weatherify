@@ -9,13 +9,14 @@ const loadTemperature = city =>{
 }
 
 const displayTemperature= temperatureData =>{
-    console.log(temperatureData.name);
+    console.log(temperatureData);
     // const temperature = document.getElementById('temperature');
     // temperature.innerText= temperatureData.main.temp;
     // const city = document.getElementById('city');
     // city.innerText=temperatureData.name;
     setInnerText("temperature",temperatureData.main.temp)
     setInnerText("city",temperatureData.name)
+    setInnerText("weather",temperatureData.weather[0].main)
 
 }
 // set innerText /HTML Markup
@@ -23,4 +24,23 @@ const setInnerText = (elementId, text)=>{
     const element = document.getElementById(elementId);
     element.innerText=text;
 }
-loadTemperature('London');
+// searching process
+const searchProcess= ()=>{
+    const searchField= document.getElementById('search-field');
+    const city = searchField.value;
+    loadTemperature(city);
+};
+// search button
+const searchTemperature = () =>{
+    searchProcess();
+}
+// search function for enter key
+document.getElementById('search-field').addEventListener("keydown",function(event){
+    console.log(event.key);
+    if (event.key === "Enter"){
+    event.preventDefault();
+    searchProcess();
+    }
+});
+// default function call for Dhaka
+loadTemperature('Dhaka');
